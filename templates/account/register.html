@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}register user{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Register</h1>
+    <p>If you are a user, <strong><a href="{% url 'account:user_login' %}">Login</a></strong>,please</p>
+    <p>or register</p>
+    <form action="." method="post">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            <div>{{ form.username }}</div>
+
+            <label for="{{ form.email.id_for_babel }}">Email</label>
+            <div>{{ form.email }}</div>
+
+            <label for="{{ form.password.id_for_label }}">Password</label>
+            <div>{{ form.password }}</div>
+
+            <label for="{{ form.password.id_for_label }}">Confirm Password</label>
+            <div>{{ form.password2 }}</div>
+
+            <label for="{{ profile.birth.id_for_label }}">Birth Date</label>
+            <div>{{ profile.birth }}</div>
+
+            <label for="{{ profile.phone.id_for_label }}">Phone</label>
+            <div>{{ profile.phone }}</div>
+        </div>
+        <input type="submit" value="注册">
+    </form>
+</div>
+{% endblock %}

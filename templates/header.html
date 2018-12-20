@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://www.youif.cn">
+                <img src="{% static '/images/logo.png' %}" width="100px">
+            </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav" role="navigation">
+                <li>
+                    <a href="{% url 'blog:blog_title' %}">BLOG</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
+                {% if user.is_authenticated %}
+                <li><a href="#">{{ user.username }}</a></li>
+                <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
+                <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
+                <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
+                {% else %}
+                    <li>
+                    <!-- <a href="#">LOGIN</a> -->
+{#                    用户登入页面中右上角的LOGIN #}
+{#                    account是本应用的namespace（配置在./mblog/urls.py中）#}
+{#                    冒号后面是URL的name（配置在./account/urls.py中）#}
+                    <a href="{% url 'account:user_login' %}">LOGIN</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
