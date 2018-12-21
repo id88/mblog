@@ -24,7 +24,7 @@ class ArticlePost(models.Model):
 
     class Meta:
         # ordering = ("title",)
-        ordering = ("-updated",)
+        ordering = ("-updated",)#按发布时间倒序排列
         index_together = (('id', 'slug'),)
 
     def __str__(self):

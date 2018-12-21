@@ -1,0 +1,18 @@
+{% extends "article/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}articles list{% endblock %}
+
+{% block content %}
+<div>
+    <header>
+        <h1>{{ article.title }}</h1>
+        <p>{{ user.username }}</p>
+    </header>
+
+    <textarea id="append-test" style="display:none;">
+        {{ article.body }}
+    </textarea>
+</div>
+{% endblock %}

@@ -44,6 +44,7 @@ function publish_article(){
         success: function(e){
             if(e=="1"){
         	    layer.msg("successful");
+        	    location.href = "{% url 'article:article_list' %}";//跳转到文章的内容页
             }else if(e=="2"){
         	    layer.msg("sorry.") ;
             }else{
