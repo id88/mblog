@@ -25,4 +25,7 @@ urlpatterns = [
 
     # 第三方重置密码的URL
     url(r'^pwd_reset/', include('password_reset.urls', namespace='pwd_reset', app_name='pwd_reset')),
+
+    # 栏目
+    url(r'^article/', include('article.urls', namespace='article', app_name='article')),
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'account',
     'password_reset',#这个是第三方的应用
+    'article',
 ]
 
 MIDDLEWARE = [
