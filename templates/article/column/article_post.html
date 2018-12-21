@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block title %}article column{% endblock %}
 {% block content %}
+<script type="text/javascript" src="{% static 'editor/css/style.css' %}"></script>
+<script type="text/javascript" src="{% static 'editor/css/editormd.css' %}"></script>
 <div style="margin-left:10px">
     <form class="form-horizontal" action="." method="post">{% csrf_token %}
         <div class="row" style="margin-top: 10px;">
@@ -21,7 +23,12 @@
 
         <div class="row" style="margin-top: 10px;">
         	<div class="col-md-2 text-right"><span>内容:</span></div>
-        	<div class="col-md-10 text-left">{{article_post_form.body}}</div>
+{#        	<div class="col-md-10 text-left">{{article_post_form.body}}</div>#}
+{#            下面这个div就是使用Markdown#}
+            <div id="editormd" class="col-md-10 text-left">
+                <textarea style="display:none;" id="id_body"></textarea>
+            </div>
+
         </div>
         <div class="row">
             <input type="button" class="btn btn-primary btn-lg" value="发布" onclick="publish_article()">
@@ -29,9 +36,9 @@
     </form>
 </div>
 
-<script type="text/javascript" src='{% static "js/jquery.js" %}'></script>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/layer.js'%}"></script>
-
+<script type="text/javascript" src='{% static "editor/editormd.min.js" %}'></script>
 <script type="text/javascript">
 function publish_article(){
     var title = $("#id_title").val();
@@ -52,5 +59,15 @@ function publish_article(){
         },
     });
 }
+
+$(function() {
+    var editor = editormd("editormd", {
+        width   : "100%",
+        height  : 640,
+        syncScrolling : "single",
+        path    : "{% static 'editor/lib/' %}"
+    });
+});
+
 </script>
 {% endblock %}
