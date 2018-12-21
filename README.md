@@ -10,7 +10,7 @@
 - Django版本：1.11
 
 
- 0、安装依赖的模块
+ 0、安装依赖的第三方库
 ```
 pip install -r requirements.txt
 ```
